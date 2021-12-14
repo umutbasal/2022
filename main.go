@@ -17,7 +17,7 @@ func main() {
 	serverCommand.Reversed = false
 	serverCommand.FitScreen = true
 	serverCommand.Delay = 0.15
-	serverCommand.Host = "0.0.0.0"
+	serverCommand.Host = ""
 	serverCommand.Port = "8080"
 
 	if port != "" {
