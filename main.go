@@ -1,6 +1,9 @@
 package main
 
-import "os"
+import (
+	"log"
+	"os"
+)
 
 func main() {
 	port := os.Getenv("PORT")
@@ -21,5 +24,8 @@ func main() {
 		serverCommand.Port = port
 	}
 
-	serverCommand.Serve([]string{"tree.gif"})
+	err := serverCommand.Serve([]string{"tree.gif"})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
