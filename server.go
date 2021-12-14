@@ -2,10 +2,10 @@ package main
 
 import (
 	"errors"
+	"log"
 	"net/http"
 
 	"github.com/qeesung/image2ascii/convert"
-	"github.com/sirupsen/logrus"
 )
 
 // ServerCommand define the server command that responsible for serving a http server
@@ -33,7 +33,7 @@ func (serverCommand *ServerCommand) Serve(args []string) error {
 	http.HandleFunc("/", flushHandler.HandlerFunc())
 
 	addr := serverCommand.Host + ":" + serverCommand.Port
-	logrus.Debug("Going to listen and serve on " + addr)
+	log.Println("Going to listen and serve on " + addr)
 	err = http.ListenAndServe(addr, nil)
 	if err != nil {
 		return err
