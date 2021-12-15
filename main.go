@@ -24,7 +24,7 @@ func main() {
 		serverCommand.Port = port
 	}
 
-	log.Println("config initialized: " + serverCommand.Host + ":" + serverCommand.Port)
+	log.Println("config initialized: `" + serverCommand.Host + ":" + serverCommand.Port + "`")
 
 	err := serverCommand.Serve([]string{"tree.gif"})
 	if err != nil {
