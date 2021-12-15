@@ -4,14 +4,12 @@ import (
 	"errors"
 	"log"
 	"net/http"
-
-	"github.com/qeesung/image2ascii/convert"
 )
 
 // ServerCommand define the server command that responsible for serving a http server
 // for ASCII image.
 type ServerCommand struct {
-	convert.Options
+	Options
 	Delay float64
 	Host  string
 	Port  string

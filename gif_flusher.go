@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"net/http"
 	"strings"
 
 	"github.com/pkg/errors"
 	"github.com/qeesung/asciiplayer/pkg/decoder"
-	"github.com/qeesung/image2ascii/convert"
 	"github.com/sirupsen/logrus"
 )
 
@@ -16,11 +16,11 @@ type GifFlushHandler struct {
 	BaseFlushHandler
 	Filename       string
 	FrameCache     []string
-	convertOptions convert.Options
+	convertOptions Options
 }
 
 // NewGifFlushHandler create a new gif flush handler
-func NewGifFlushHandler(filename string, convertOptions *convert.Options) FlushHandler {
+func NewGifFlushHandler(filename string, convertOptions *Options) FlushHandler {
 	return &GifFlushHandler{
 		Filename:       filename,
 		FrameCache:     make([]string, 0),
@@ -43,11 +43,22 @@ func (handler *GifFlushHandler) Init() error {
 	}
 
 	convertOptions := handler.convertOptions
-	converter := convert.NewImageConverter()
+	converter := NewImageConverter()
 
 	for _, frame := range frames {
 		// todo: container stucks on here
-		frameStr := converter.Image2ASCIIString(frame, &convertOptions)
+
+		convertedPixelASCII, err := converter.Image2ASCIIMatrix(frame, &convertOptions)
+		if err != nil {
+			return err
+		}
+		var buffer bytes.Buffer
+
+		for i := 0; i < len(convertedPixelASCII); i++ {
+			buffer.WriteString(convertedPixelASCII[i])
+		}
+
+		frameStr := buffer.String()
 		handler.FrameCache = append(handler.FrameCache, frameStr)
 	}
 	return nil

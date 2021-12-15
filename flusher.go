@@ -8,7 +8,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/qeesung/asciiplayer/pkg/player"
 	"github.com/qeesung/asciiplayer/pkg/util"
-	"github.com/qeesung/image2ascii/convert"
 )
 
 // FlushHandler define the basic oprations that flush image to remote server
@@ -22,7 +21,7 @@ type FlushHandler interface {
 // function to build the flusher handler.
 var supportedFlushHandlerMatchers = []struct {
 	Match       func(string) bool
-	Constructor func(string, *convert.Options) FlushHandler
+	Constructor func(string, *Options) FlushHandler
 }{
 	{
 		Match:       util.IsGif,
@@ -31,7 +30,7 @@ var supportedFlushHandlerMatchers = []struct {
 }
 
 // NewFlushHandler is factory method to create flush handler
-func NewFlushHandler(filename string, options *convert.Options) (handler FlushHandler, supported bool) {
+func NewFlushHandler(filename string, options *Options) (handler FlushHandler, supported bool) {
 	for _, matcher := range supportedFlushHandlerMatchers {
 		if matcher.Match(filename) {
 			return matcher.Constructor(filename, options), true
