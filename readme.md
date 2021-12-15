@@ -1,5 +1,7 @@
 # 2022
 
+[![asciicast](https://asciinema.org/a/bmfyVBgOZQDN8tKIOMzc8QwYV.svg)](https://asciinema.org/a/bmfyVBgOZQDN8tKIOMzc8QwYV)
+
 ## Running
 `go run .`
 
