@@ -102,7 +102,8 @@ type imageSizeResolver struct {
 func (handler *ImageResizeHandler) ScreenSize() (width, height int, err error) {
 	width, height, err = handler.terminal.ScreenSize()
 	if err != nil {
-		return 157, 40, nil // default screen size for mac os mock on container
+		// return 157, 40, nil // default full screen size for mac os mock on container
+		return 80, 24, nil // smaller terminal mocking
 	}
 	return width, height, nil
 }
