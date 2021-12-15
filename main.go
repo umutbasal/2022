@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"path/filepath"
 )
 
 func main() {
@@ -26,8 +27,26 @@ func main() {
 
 	log.Println("config initialized: `" + serverCommand.Host + ":" + serverCommand.Port + "`")
 
-	err := serverCommand.Serve([]string{"tree.gif"})
+	p, err := os.Getwd()
+	dir := filepath.Base(p)
+
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+	}
+
+	kodata := os.Getenv("KO_DATA_PATH")
+	if kodata == "" {
+		kodata = "kodata"
+	}
+
+	gif := kodata + "/tree.gif"
+
+	if dir == "bin" {
+		gif = "../" + gif
+	}
+
+	err = serverCommand.Serve([]string{gif})
+	if err != nil {
+		log.Println(err)
 	}
 }

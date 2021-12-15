@@ -46,6 +46,7 @@ func (handler *GifFlushHandler) Init() error {
 	converter := convert.NewImageConverter()
 
 	for _, frame := range frames {
+		// todo: container stucks on here
 		frameStr := converter.Image2ASCIIString(frame, &convertOptions)
 		handler.FrameCache = append(handler.FrameCache, frameStr)
 	}
