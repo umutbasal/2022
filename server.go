@@ -32,9 +32,10 @@ func (serverCommand *ServerCommand) Serve(args []string) error {
 
 	http.HandleFunc("/", flushHandler.HandlerFunc())
 
-	addr := serverCommand.Host + ":" + serverCommand.Port
+	// addr := serverCommand.Host + ":" + serverCommand.Port
+	addr := ":" + serverCommand.Port
 	log.Println("Going to listen and serve on " + addr)
-	err = http.ListenAndServe(addr, nil)
+	log.Fatal(http.ListenAndServe(addr, nil))
 	if err != nil {
 		return err
 	}
