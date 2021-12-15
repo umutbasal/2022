@@ -1,5 +1,7 @@
 # 2022
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 [![asciicast](https://asciinema.org/a/htM9lWdlMREFeDIq724Qy5OAA.svg)](https://asciinema.org/a/htM9lWdlMREFeDIq724Qy5OAA)
 
 ## Running
