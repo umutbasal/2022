@@ -1,10 +1,7 @@
 # 2022
 
-## Install
-`go get -u github.com/umutbasal/2022`
-
 ## Running
-`$GOPATH/bin/2022`
+`go run .`
 
 ## Testing
 `curl http://localhost:8080`
