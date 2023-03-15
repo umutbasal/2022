@@ -28,7 +28,8 @@ func (serverCommand *ServerCommand) Serve(args []string) error {
 		return err
 	}
 
-	http.HandleFunc("/", flushHandler.HandlerFunc())
+	
+	http.HandleFunc("/tree", flushHandler.HandlerFunc())
 
 	addr := serverCommand.Host + ":" + serverCommand.Port
 	log.Println("Going to listen and serve on " + addr)
