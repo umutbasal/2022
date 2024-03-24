@@ -4,7 +4,8 @@
 
 [![CodeQL](https://github.com/umutbasal/2022/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/umutbasal/2022/actions/workflows/codeql-analysis.yml)
 
-![image](https://github.com/umutbasal/2022/assets/21194079/4946a52c-7d9b-4f11-87f5-cbae60118de9)
+![out](https://github.com/umutbasal/2022/assets/21194079/9a530d0b-0e93-4bb6-aae4-38cb0a17e603)
+
 
 
 ## Running
